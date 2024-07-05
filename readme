@@ -1,0 +1,13 @@
+==============================
+| My personal neovim config. |
+==============================
+| Plugins:                   |
+|   - vim-plug               |
+|   - kanagawa.nvim          |
+|   - lualine.nvim           |
+|   - telescope.nvim         |
+|   - mason.nvim             |
+|   - nvim-lint              |
+|   - comment.nvim           |
+|   - autoclose.nvim         |
+==============================
