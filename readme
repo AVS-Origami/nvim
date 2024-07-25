@@ -10,4 +10,7 @@
 |   - nvim-lint              |
 |   - comment.nvim           |
 |   - autoclose.nvim         |
+|   - coq.nvim               |
+|   - gitsigns.nvim          |
+|   - toggleterm.nvim        |
 ==============================

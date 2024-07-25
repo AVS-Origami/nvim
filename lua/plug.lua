@@ -6,30 +6,52 @@ vim.call('plug#begin')
 Plug("sainnhe/everforest")
 Plug("rebelot/kanagawa.nvim")
 
--- Statusline
+-- Status
 Plug("nvim-lualine/lualine.nvim")
+Plug("lewis6991/gitsigns.nvim")
 
 -- Telescope
 Plug("nvim-lua/plenary.nvim")
 Plug("nvim-telescope/telescope-fzf-native.nvim", { ["do"] = "make" })
 Plug("nvim-telescope/telescope.nvim", { ["tag"] = "*" })
 
--- LSP
+-- Languages
 Plug("williamboman/mason.nvim")
+Plug("williamboman/mason-lspconfig.nvim")
+Plug("neovim/nvim-lspconfig")
 Plug("mfussenegger/nvim-lint")
+Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
+
+-- Autocompletion
+Plug("ms-jpq/coq_nvim", { ["branch"] = "coq" })
+Plug("ms-jpq/coq.artifacts", { ["branch"] = "artifacts" })
 
 -- QOL
 Plug("numToStr/Comment.nvim")
 Plug("m4xshen/autoclose.nvim")
+Plug("akinsho/toggleterm.nvim", { ["tag"] = "*" })
 
 vim.call('plug#end')
 
 -- Setup plugins
 require("Comment").setup()
 require("autoclose").setup()
+require("toggleterm").setup()
 require("telescope").setup()
 require('telescope').load_extension("fzf")
-require("mason").setup()
+
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "[I]",
+            package_pending = "[P]",
+            package_uninstalled = "[U]"
+        }
+    }
+})
+
+require("mason-lspconfig").setup()
+require('gitsigns').setup()
 
 require("lualine").setup {
     options = {
@@ -38,10 +60,15 @@ require("lualine").setup {
     }
 }
 
+vim.g.coq_settings = {
+    auto_start = "shut-up",
+    ["display.icons.mode"] = "none",
+}
+
 -- Update plugins when saving this file
 vim.cmd([[
     augroup vim_plug_user_config
         autocmd!
-        autocmd BufWritePost plug.lua PlugUpdate
+        autocmd BufWritePost plug.lua source <afile> | PlugUpdate
     augroup end
 ]])

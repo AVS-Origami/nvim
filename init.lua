@@ -1,5 +1,6 @@
 require("plug")
 require("config")
+require("lsp")
 
 -- VIM STUFF
 ------------
@@ -22,6 +23,7 @@ opt.smartcase = true
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+opt.showmode = false
 
 -- Behavior
 opt.guicursor = "v-c-sm-n-i-ci-ve-r-cr-o:hor20"
@@ -29,4 +31,3 @@ opt.backspace = "indent,eol,start"
 opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
-opt.showmode = false

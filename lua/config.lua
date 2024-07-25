@@ -1,5 +1,27 @@
 -- Colorscheme
-vim.cmd('silent! colorscheme kanagawa')
+require('kanagawa').setup({
+    colors = {
+        theme = {
+            all = {
+                ui = {
+                    bg_gutter = "none",
+                }
+            }
+        }
+    }
+})
+
+vim.cmd("colorscheme kanagawa-wave")
+
+-- Diagnostics
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = "[!]",
+    },
+})
+
+-- Commands
+vim.api.nvim_create_user_command("Term", "ToggleTerm direction=float name=term", {})
 
 -- Keybinds
 local kmap = vim.keymap
